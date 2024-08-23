@@ -10,8 +10,8 @@ public interface ProductoService {
 
     List<Producto> getAllProductos();
     Optional<Producto> getProductoById(String id);
-//    ProductoDTO createProducto(ProductoDTO productoDTO);
-    Producto createProducto(Producto producto);
+    ProductoDTO createProducto(ProductoDTO productoDTO);
+//    Producto createProducto(Producto producto);
     ProductoDTO updateProducto(Producto producto);
     void deleteProducto(String id);
 }

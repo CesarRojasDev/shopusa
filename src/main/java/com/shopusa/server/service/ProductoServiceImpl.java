@@ -24,16 +24,16 @@ public class ProductoServiceImpl implements  ProductoService{
         return productoRepository.findById(id);
     }
 
-//    @Override
-//    public ProductoDTO createProducto(ProductoDTO productoDTO) {
-//        Producto producto = productoMapper.INSTANCE.toProducto(productoDTO);
-//        Producto savedProducto = productoRepository.save(producto);
-//        return productoMapper.INSTANCE.toProductoDTO(savedProducto);
-//    }
     @Override
-    public Producto createProducto(Producto producto){
-        return productoRepository.save(producto);
+    public ProductoDTO createProducto(ProductoDTO productoDTO) {
+        Producto producto = productoMapper.INSTANCE.toProducto(productoDTO);
+        Producto savedProducto = productoRepository.save(producto);
+        return productoMapper.INSTANCE.toProductoDTO(savedProducto);
     }
+//    @Override
+//    public Producto createProducto(Producto producto){
+//        return productoRepository.save(producto);
+//    }
     @Override
     public ProductoDTO updateProducto(Producto producto) {
         return null;

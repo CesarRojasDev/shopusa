@@ -1,6 +1,8 @@
 package com.shopusa.server.dto;
-import com.shopusa.server.entity.SubCategoria;
 
+import lombok.Data;
+
+@Data
 public class ProductoDTO {
     private String nombre;
     private double precioUSD;
@@ -11,6 +13,7 @@ public class ProductoDTO {
     private String color;
     private String descripcion;
     private String caracteristica;
-    private  String link;
-    private SubCategoria idSubCategoria;
+    private String link;
+    private SubCategoriaDTO subCategoria;
+//    private String subCategoria;
 }

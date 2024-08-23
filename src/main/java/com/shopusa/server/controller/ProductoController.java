@@ -19,12 +19,12 @@ public class ProductoController {
     @GetMapping
     public List<Producto> getProductos(){return productoService.getAllProductos();}
 
-//    @PostMapping
-//    public ProductoDTO createProducto(@RequestBody ProductoDTO productoDTO){
-//        return productoService.createProducto(productoDTO);
-//    }
-        @PostMapping
-    public Producto createProducto(@RequestBody Producto producto){
-        return productoService.createProducto(producto);
+    @PostMapping
+    public ProductoDTO createProducto(@RequestBody ProductoDTO productoDTO){
+        return productoService.createProducto(productoDTO);
     }
+//        @PostMapping
+//    public Producto createProducto(@RequestBody Producto producto){
+//        return productoService.createProducto(producto);
+//    }
 }
