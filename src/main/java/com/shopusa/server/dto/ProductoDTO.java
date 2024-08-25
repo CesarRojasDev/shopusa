@@ -15,5 +15,4 @@ public class ProductoDTO {
     private String caracteristica;
     private String link;
     private SubCategoriaDTO subCategoria;
-//    private String subCategoria;
 }
