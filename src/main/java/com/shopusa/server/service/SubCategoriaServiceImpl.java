@@ -13,12 +13,15 @@ public class SubCategoriaServiceImpl implements  SubCategoriaService{
 
     @Autowired
     private SubCategoriaRepository subCategoriaRepository;
+
     @Override
-    public List<SubCategoria> getAllSubCategorias() {return subCategoriaRepository.findAll();}
+    public List<SubCategoria> getAllSubCategorias() {
+        return subCategoriaRepository.findAll();
+    }
 
     @Override
     public Optional<SubCategoria> getSubCategoriaById(String id) {
-        return Optional.empty();
+        return subCategoriaRepository.findById(id);
     }
 
     @Override
@@ -33,6 +36,5 @@ public class SubCategoriaServiceImpl implements  SubCategoriaService{
 
     @Override
     public void deleteSubCategoria(String id) {
-
     }
 }

@@ -26,13 +26,11 @@ public class Producto {
     private String color;
     @Column(name = "stock")
     private Integer stock;
-    @Lob
-    @Column(name ="descripcion")
+    @Column(name ="descripcion", columnDefinition = "TEXT")
     private String descripcion;
     @Column(name ="caracteristica")
     private String caracteristica;
-    @Lob
-    @Column(name ="link" )
+    @Column(name ="link", columnDefinition = "TEXT")
     private  String link;
     @ManyToOne
     @JoinColumn(name = "subcategoria_id", nullable = false)

@@ -20,7 +20,7 @@ public class CategoriaServiceImpl implements CategoriaService{
 
     @Override
     public Optional<Categoria> getCategoriaById(String id) {
-        return Optional.empty();
+        return categoriaRepository.findById(id);
     }
 
     @Override
