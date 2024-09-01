@@ -17,7 +17,7 @@ public class Producto {
     @Column(name = "sku")
     private String sku;
     @Column(name ="precioUSD" )
-    private double precioUSD;
+    private Double precioUSD;
     @Column(name ="marca" )
     private String marca;
     @Column(name ="modelo" )

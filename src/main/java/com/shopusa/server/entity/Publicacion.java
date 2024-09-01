@@ -18,7 +18,7 @@ public class Publicacion{
     private LocalDate fechaPublicacion;
 
     @Column(name = "precio")
-    private double precio;
+    private Double precio;
     @Column(name = "skuPlataforma")
     private String skuPlataforma;
     @ManyToOne

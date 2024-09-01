@@ -17,14 +17,14 @@ public class ProductoServiceImpl implements  ProductoService{
     @Autowired
     private ProductoRepository productoRepository;
     private ProductoMapper productoMapper;
+
     @Override
     public List<Producto> getAllProductos() {return productoRepository.findAll();}
 
     @Override
     public Producto getProductoById(String id) {
-        return productoRepository.findById(id).orElseThrow(()-> new ProductoNotFoundExeption("Producto no encontrado con id " + id));
+        return findProductoById(id);
     }
-
     @Override
     public ProductoDTO createProducto(ProductoDTO productoDTO) {
         Producto producto = productoMapper.INSTANCE.toProducto(productoDTO);
@@ -32,10 +32,19 @@ public class ProductoServiceImpl implements  ProductoService{
         return productoMapper.INSTANCE.toProductoDTO(savedProducto);
     }
     @Override
-    public ProductoDTO updateProducto(Producto producto) {
-        return null;
+    public ProductoDTO updateProducto(String id,ProductoDTO productoDTO) {
+        Producto existingProducto = findProductoById(id);
+        productoMapper.INSTANCE.updateProductoFromDto(productoDTO, existingProducto);
+        Producto savedProducto = productoRepository.save(existingProducto);
+        return productoMapper.INSTANCE.toProductoDTO(savedProducto);
     }
     @Override
     public void deleteProducto(String id) {
+        Producto producto = findProductoById(id);
+        productoRepository.delete(producto);
+    }
+    private Producto findProductoById(String id) {
+        return productoRepository.findById(id)
+                .orElseThrow(() -> new ProductoNotFoundExeption("Producto no encontrado con id " + id));
     }
 }
