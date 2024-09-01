@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "plataformas")
+@Table(name = "plataformas",uniqueConstraints = {
+        @UniqueConstraint(columnNames = "nombre")
+})
 @Data
 @NoArgsConstructor
 public class Plataforma {
