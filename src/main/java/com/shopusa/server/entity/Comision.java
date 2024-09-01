@@ -9,7 +9,7 @@ public class Comision {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @Column(name = "valor")
-    private double valor;
+    private Double valor;
 
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)

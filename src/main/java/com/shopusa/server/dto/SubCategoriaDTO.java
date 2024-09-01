@@ -9,10 +9,10 @@ public class SubCategoriaDTO {
     private String id;
     private String nombre;
     private String codigo;
-    private double alto;
-    private double ancho;
-    private double largo;
+    private Double alto;
+    private Double ancho;
+    private Double largo;
     private String garantia;
-    private double pesoGramos;
-    private Categoria categoriaId;
+    private Double pesoGramos;
+    private CategoriaDTO categoria;
 }

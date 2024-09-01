@@ -19,13 +19,13 @@ public class SubCategoria {
     @Column(name = "codigo")
     private String codigo;
     @Column(name = "pesoGramos")
-    private double pesoGramos;
+    private Double pesoGramos;
     @Column(name = "ancho")
-    private double ancho;
+    private Double ancho;
     @Column(name = "largo")
-    private  double largo;
+    private  Double largo;
     @Column(name = "alto")
-    private double alto;
+    private Double alto;
     @Column(name = "garantia")
     private  String garantia;
     @ManyToOne

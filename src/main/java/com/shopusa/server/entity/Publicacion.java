@@ -16,7 +16,6 @@ public class Publicacion{
     private String id;
     @Column(name ="fechaPublicacion")
     private LocalDate fechaPublicacion;
-
     @Column(name = "precio")
     private Double precio;
     @Column(name = "skuPlataforma")

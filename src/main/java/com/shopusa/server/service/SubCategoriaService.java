@@ -1,14 +1,15 @@
 package com.shopusa.server.service;
 
+import com.shopusa.server.dto.SubCategoriaDTO;
 import com.shopusa.server.entity.SubCategoria;
 
 import java.util.List;
-import java.util.Optional;
+
 
 public interface SubCategoriaService {
     List<SubCategoria> getAllSubCategorias();
-    Optional<SubCategoria> getSubCategoriaById(String id);
-    SubCategoria createSubCategoria(SubCategoria subCategoria);
-    SubCategoria updateSubCategoria(SubCategoria subCategoria);
+    SubCategoria getSubCategoriaById(String id);
+    SubCategoriaDTO createSubCategoria(SubCategoriaDTO subCategoriaDTO);
+    SubCategoriaDTO updateSubCategoria(String id, SubCategoriaDTO subCategoriaDTO);
     void deleteSubCategoria(String id);
 }
