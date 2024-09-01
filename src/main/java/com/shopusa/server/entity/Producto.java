@@ -18,6 +18,8 @@ public class Producto {
     private String sku;
     @Column(name ="precioUSD" )
     private Double precioUSD;
+    @Column(name ="precioSoles")
+    private Double precioSoles;
     @Column(name ="marca" )
     private String marca;
     @Column(name ="modelo" )

@@ -28,6 +28,7 @@ public class ProductoServiceImpl implements  ProductoService{
     @Override
     public ProductoDTO createProducto(ProductoDTO productoDTO) {
         Producto producto = productoMapper.INSTANCE.toProducto(productoDTO);
+        producto.setPrecioSoles(producto.getPrecioUSD()*3.80);
         Producto savedProducto = productoRepository.save(producto);
         return productoMapper.INSTANCE.toProductoDTO(savedProducto);
     }

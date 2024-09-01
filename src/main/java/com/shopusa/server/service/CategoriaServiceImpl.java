@@ -1,17 +1,22 @@
 package com.shopusa.server.service;
 
+import com.shopusa.server.dto.CategoriaDTO;
 import com.shopusa.server.entity.Categoria;
+import com.shopusa.server.entity.Producto;
+import com.shopusa.server.exeption.CategoriaNotFoundExeption;
+import com.shopusa.server.mapper.CategoriaMapper;
 import com.shopusa.server.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService{
     @Autowired
     private CategoriaRepository categoriaRepository;
+    private CategoriaMapper categoriaMapper;
 
     @Override
     public List<Categoria> getAllCategorias() {
@@ -19,22 +24,33 @@ public class CategoriaServiceImpl implements CategoriaService{
     }
 
     @Override
-    public Optional<Categoria> getCategoriaById(String id) {
-        return categoriaRepository.findById(id);
+    public Categoria getCategoriaById(String id) {
+        return findCategoriaById(id);
     }
 
     @Override
-    public Categoria createCategoria(Categoria categoria) {
-        return categoriaRepository.save(categoria);
+    public CategoriaDTO createCategoria(CategoriaDTO categoriaDTO) {
+        Categoria categoria = categoriaMapper.INSTANCE.toCategoria(categoriaDTO);
+        Categoria savedCategoria = categoriaRepository.save(categoria);
+        return categoriaMapper.INSTANCE.toCategoriaDTO(savedCategoria);
     }
 
     @Override
-    public Categoria updateCategoria(Categoria categoria) {
-        return null;
+    public CategoriaDTO updateCategoria(String id,CategoriaDTO categoriaDTO) {
+        Categoria existingCategoria = findCategoriaById(id);
+        categoriaMapper.INSTANCE.updateCategoriaFromDto(categoriaDTO, existingCategoria);
+        Categoria savedCategoria = categoriaRepository.save(existingCategoria);
+        return categoriaMapper.INSTANCE.toCategoriaDTO(savedCategoria);
     }
 
     @Override
     public void deleteCategoria(String id) {
+        Categoria categoria = findCategoriaById(id);
+        categoriaRepository.delete(categoria);
+    }
 
+    private Categoria findCategoriaById(String id) {
+        return categoriaRepository.findById(id)
+                .orElseThrow(() -> new CategoriaNotFoundExeption("Categoria no encontrada con id " + id));
     }
 }

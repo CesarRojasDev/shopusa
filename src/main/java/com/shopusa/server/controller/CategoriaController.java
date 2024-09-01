@@ -1,5 +1,7 @@
 package com.shopusa.server.controller;
 
+import com.shopusa.server.dto.CategoriaDTO;
+import com.shopusa.server.dto.ProductoDTO;
 import com.shopusa.server.entity.Categoria;
 import com.shopusa.server.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,20 @@ public class CategoriaController {
     public List<Categoria>getCategorias(){
         return  categoriaService.getAllCategorias();
     }
+    @GetMapping("/{id}")
+    public Categoria getCategoria(@PathVariable String id){
+        return categoriaService.getCategoriaById(id);
+    }
     @PostMapping
-    public Categoria createCategoria(@RequestBody Categoria categoria){
-        return categoriaService.createCategoria(categoria);
+    public CategoriaDTO createCategoria(@RequestBody CategoriaDTO categoriaDTO){
+        return categoriaService.createCategoria(categoriaDTO);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteCategoria(@PathVariable String id){
+        categoriaService.deleteCategoria(id);
+    }
+    @PutMapping("/{id}")
+    public CategoriaDTO updateCategoria(@PathVariable String id, @RequestBody CategoriaDTO categoriaDTO){
+        return categoriaService.updateCategoria(id,categoriaDTO);
     }
 }

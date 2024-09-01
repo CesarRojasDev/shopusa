@@ -28,8 +28,6 @@ public class SubCategoria {
     private double alto;
     @Column(name = "garantia")
     private  String garantia;
-    @Column(name = "comision")
-    private double comision;
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
