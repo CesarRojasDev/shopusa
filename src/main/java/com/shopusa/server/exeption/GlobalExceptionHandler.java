@@ -21,12 +21,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleSubCategoriaNotFoundException(SubCategoriaNotFoundExeption ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
-//
-//    @ExceptionHandler(ComisionNotFoundExeption.class)
-//    public ResponseEntity<String> handleComisionNotFoundException(ComisionNotFoundExeption ex) {
-//        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
-//    }
-//
+
+    @ExceptionHandler(ComisionNotFoundExeption.class)
+    public ResponseEntity<String> handleComisionNotFoundException(ComisionNotFoundExeption ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(PlataformaNotFoundExeption.class)
     public ResponseEntity<String> handlePlataformaNotFoundException(PlataformaNotFoundExeption ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
