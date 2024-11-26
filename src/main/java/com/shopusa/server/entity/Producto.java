@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "productos")
 @Data
@@ -37,4 +40,6 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "subcategoria_id", nullable = false)
     private SubCategoria subCategoria;
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Imagen> imagenes = new ArrayList<>();
 }

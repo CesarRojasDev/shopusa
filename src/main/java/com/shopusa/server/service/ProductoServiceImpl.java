@@ -37,8 +37,8 @@ public class ProductoServiceImpl implements  ProductoService{
     @Override
     public ProductoDTO updateProducto(String id,ProductoDTO productoDTO) {
         Producto existingProducto = findProductoById(id);
-        existingProducto.setPrecioSoles(calculatePrecioSoles(existingProducto.getPrecioUSD()));
         productoMapper.INSTANCE.updateProductoFromDto(productoDTO, existingProducto);
+        existingProducto.setPrecioSoles(calculatePrecioSoles(existingProducto.getPrecioUSD()));
         Producto savedProducto = productoRepository.save(existingProducto);
         return productoMapper.INSTANCE.toProductoDTO(savedProducto);
     }
@@ -54,9 +54,10 @@ public class ProductoServiceImpl implements  ProductoService{
 
     private double calculatePrecioSoles(double precioUSD) {
         BigDecimal tipoCambio = new BigDecimal("3.80");
-        BigDecimal precioUSDBigDecimal = new BigDecimal(Double.toString(precioUSD));
+        BigDecimal precioUSDBigDecimal = BigDecimal.valueOf(precioUSD);
         BigDecimal precioSoles = precioUSDBigDecimal.multiply(tipoCambio);
         precioSoles = precioSoles.setScale(2, RoundingMode.HALF_UP);
+        System.out.println("USD: " + precioUSD + " - Soles: " + precioSoles.doubleValue());  // Para depurar
         return precioSoles.doubleValue();
     }
 }
