@@ -1,7 +1,6 @@
 package com.shopusa.server.entity;
 
-public enum Rol {
-    ADMIN,
+public enum Role {
     USER,
-    GUEST
+    ADMIN
 }

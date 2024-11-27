@@ -5,6 +5,7 @@ import com.shopusa.server.dto.ProductoDTO;
 import com.shopusa.server.entity.Producto;
 import com.shopusa.server.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class ProductoController {
     private ProductoService productoService;
 
     @GetMapping
+    @PreAuthorize("hasRole('USER')")
     public List<Producto> getProductos(){return productoService.getAllProductos();}
 
     @GetMapping("/{id}")
