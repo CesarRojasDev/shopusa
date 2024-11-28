@@ -1,6 +1,5 @@
 package com.shopusa.server.dto;
 
-import com.shopusa.server.entity.Categoria;
 import lombok.Data;
 
 

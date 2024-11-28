@@ -1,7 +1,6 @@
 package com.shopusa.server.controller;
 
 import com.shopusa.server.dto.CategoriaDTO;
-import com.shopusa.server.dto.ProductoDTO;
 import com.shopusa.server.entity.Categoria;
 import com.shopusa.server.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;

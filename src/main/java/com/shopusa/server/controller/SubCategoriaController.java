@@ -1,6 +1,5 @@
 package com.shopusa.server.controller;
 
-import com.shopusa.server.dto.CategoriaDTO;
 import com.shopusa.server.dto.SubCategoriaDTO;
 import com.shopusa.server.entity.SubCategoria;
 import com.shopusa.server.service.SubCategoriaService;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/subcategorias")

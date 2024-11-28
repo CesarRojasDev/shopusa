@@ -1,17 +1,18 @@
-package com.shopusa.server.service;
+package com.shopusa.server.service.impl;
 
 import com.shopusa.server.dto.ComisionDTO;
 import com.shopusa.server.entity.Comision;
 import com.shopusa.server.exeption.ComisionNotFoundExeption;
 import com.shopusa.server.mapper.ComisionMapper;
 import com.shopusa.server.repository.ComisionRepository;
+import com.shopusa.server.service.ComisionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ComisionServiceImpl implements ComisionService{
+public class ComisionServiceImpl implements ComisionService {
 
     @Autowired
     private ComisionRepository comisionRepository;

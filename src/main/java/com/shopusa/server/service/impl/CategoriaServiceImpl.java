@@ -1,11 +1,11 @@
-package com.shopusa.server.service;
+package com.shopusa.server.service.impl;
 
 import com.shopusa.server.dto.CategoriaDTO;
 import com.shopusa.server.entity.Categoria;
-import com.shopusa.server.entity.Producto;
 import com.shopusa.server.exeption.CategoriaNotFoundExeption;
 import com.shopusa.server.mapper.CategoriaMapper;
 import com.shopusa.server.repository.CategoriaRepository;
+import com.shopusa.server.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Service
-public class CategoriaServiceImpl implements CategoriaService{
+public class CategoriaServiceImpl implements CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
     private CategoriaMapper categoriaMapper;

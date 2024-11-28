@@ -13,7 +13,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:8080") // Cambia esto a la URL de tu frontend Angular
+                        .allowedOrigins("http://localhost:4200") // Cambia esto a la URL de tu frontend Angular
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
             }
         };

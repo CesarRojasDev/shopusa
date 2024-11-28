@@ -1,10 +1,11 @@
-package com.shopusa.server.service;
+package com.shopusa.server.service.impl;
 
 import com.shopusa.server.dto.ProductoDTO;
 import com.shopusa.server.entity.Producto;
 import com.shopusa.server.exeption.ProductoNotFoundExeption;
 import com.shopusa.server.mapper.ProductoMapper;
 import com.shopusa.server.repository.ProductoRepository;
+import com.shopusa.server.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 
 @Service
-public class ProductoServiceImpl implements  ProductoService{
+public class ProductoServiceImpl implements ProductoService {
 
     @Autowired
     private ProductoRepository productoRepository;

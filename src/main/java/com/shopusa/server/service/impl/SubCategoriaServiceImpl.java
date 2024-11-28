@@ -1,20 +1,18 @@
-package com.shopusa.server.service;
+package com.shopusa.server.service.impl;
 
 import com.shopusa.server.dto.SubCategoriaDTO;
-import com.shopusa.server.entity.Categoria;
 import com.shopusa.server.entity.SubCategoria;
-import com.shopusa.server.exeption.CategoriaNotFoundExeption;
 import com.shopusa.server.exeption.SubCategoriaNotFoundExeption;
 import com.shopusa.server.mapper.SubCategoriaMapper;
 import com.shopusa.server.repository.SubCategoriaRepository;
+import com.shopusa.server.service.SubCategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class SubCategoriaServiceImpl implements  SubCategoriaService{
+public class SubCategoriaServiceImpl implements SubCategoriaService {
 
     @Autowired
     private SubCategoriaRepository subCategoriaRepository;

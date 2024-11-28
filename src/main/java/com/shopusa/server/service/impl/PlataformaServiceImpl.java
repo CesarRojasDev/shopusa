@@ -1,21 +1,18 @@
-package com.shopusa.server.service;
+package com.shopusa.server.service.impl;
 
 import com.shopusa.server.dto.PlataformaDTO;
-import com.shopusa.server.entity.Categoria;
 import com.shopusa.server.entity.Plataforma;
-import com.shopusa.server.exeption.CategoriaNotFoundExeption;
 import com.shopusa.server.exeption.PlataformaNotFoundExeption;
-import com.shopusa.server.mapper.CategoriaMapper;
 import com.shopusa.server.mapper.PlataformaMapper;
-import com.shopusa.server.repository.CategoriaRepository;
 import com.shopusa.server.repository.PlataformaRepository;
+import com.shopusa.server.service.PlataformaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PlataformaServiceImpl implements PlataformaService{
+public class PlataformaServiceImpl implements PlataformaService {
     @Autowired
     private PlataformaRepository plataformaRepository;
     private PlataformaMapper plataformaMapper;
