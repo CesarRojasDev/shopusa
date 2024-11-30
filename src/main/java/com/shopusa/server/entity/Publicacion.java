@@ -1,10 +1,10 @@
 package com.shopusa.server.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "publicaciones")

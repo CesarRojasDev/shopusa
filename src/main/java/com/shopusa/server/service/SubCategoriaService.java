@@ -1,10 +1,9 @@
 package com.shopusa.server.service;
 
-import com.shopusa.server.dto.SubCategoriaDTO;
-import com.shopusa.server.entity.SubCategoria;
-
 import java.util.List;
 
+import com.shopusa.server.dto.SubCategoriaDTO;
+import com.shopusa.server.entity.SubCategoria;
 
 public interface SubCategoriaService {
     List<SubCategoria> getAllSubCategorias();

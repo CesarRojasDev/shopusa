@@ -1,10 +1,10 @@
 package com.shopusa.server.entity;
 
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Set;
 
 @Entity
 @Table(name = "subCategorias")

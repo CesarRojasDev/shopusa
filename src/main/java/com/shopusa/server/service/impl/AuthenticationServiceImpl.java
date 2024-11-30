@@ -1,5 +1,12 @@
 package com.shopusa.server.service.impl;
 
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
 import com.shopusa.server.dao.request.SignInRequest;
 import com.shopusa.server.dao.request.SignUpRequest;
 import com.shopusa.server.dao.response.JwtAuthenticationResponse;
@@ -8,20 +15,16 @@ import com.shopusa.server.entity.Usuario;
 import com.shopusa.server.repository.UsuarioRepository;
 import com.shopusa.server.service.AuthenticationService;
 import com.shopusa.server.service.JwtService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
+
     private final UsuarioRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+
     @Override
     public JwtAuthenticationResponse signup(SignUpRequest request) {
 
@@ -38,7 +41,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         var user = userRepository.findByUsername(request.getUsername())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid username or password."));
+                .orElseThrow(() -> new IllegalArgumentException("Credenciales incorrectas"));
         var jwt = jwtService.generateToken(user);
         return JwtAuthenticationResponse.builder().token(jwt).build();
     }

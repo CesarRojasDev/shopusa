@@ -1,11 +1,9 @@
 package com.shopusa.server.service;
 
+import java.util.List;
+
 import com.shopusa.server.dto.CategoriaDTO;
 import com.shopusa.server.entity.Categoria;
-
-
-import java.util.List;
-import java.util.Optional;
 
 public interface CategoriaService {
     List<Categoria> getAllCategorias();

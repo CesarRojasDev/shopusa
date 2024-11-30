@@ -1,10 +1,9 @@
 package com.shopusa.server.service;
 
-import com.shopusa.server.dto.ProductoDTO;
-import com.shopusa.server.entity.Producto;
-
 import java.util.List;
 
+import com.shopusa.server.dto.ProductoDTO;
+import com.shopusa.server.entity.Producto;
 
 public interface ProductoService {
     List<Producto> getAllProductos();

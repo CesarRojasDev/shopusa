@@ -1,9 +1,9 @@
 package com.shopusa.server.service;
 
+import java.util.List;
+
 import com.shopusa.server.dto.ComisionDTO;
 import com.shopusa.server.entity.Comision;
-
-import java.util.List;
 
 public interface ComisionService {
     List<Comision> getAllComisiones();

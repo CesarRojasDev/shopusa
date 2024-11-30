@@ -1,18 +1,16 @@
 package com.shopusa.server.service.impl;
 
-import com.shopusa.server.dto.PublicacionDTO;
-import com.shopusa.server.entity.Comision;
-import com.shopusa.server.entity.Publicacion;
-import com.shopusa.server.entity.SubCategoria;
-import com.shopusa.server.exeption.PublicacionNotFoundExeption;
-import com.shopusa.server.mapper.PublicacionMapper;
-import com.shopusa.server.mapper.SubCategoriaMapper;
-import com.shopusa.server.repository.PublicacionRepository;
-import com.shopusa.server.service.PublicacionService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.shopusa.server.dto.PublicacionDTO;
+import com.shopusa.server.entity.Publicacion;
+import com.shopusa.server.exeption.PublicacionNotFoundExeption;
+import com.shopusa.server.mapper.PublicacionMapper;
+import com.shopusa.server.repository.PublicacionRepository;
+import com.shopusa.server.service.PublicacionService;
 
 @Service
 public class PublicacionServiceImpl implements PublicacionService {
@@ -22,7 +20,9 @@ public class PublicacionServiceImpl implements PublicacionService {
     private PublicacionMapper publicacionMapper;
 
     @Override
-    public List<Publicacion> getAllPublicaciones() {return publicacionRepository.findAll();}
+    public List<Publicacion> getAllPublicaciones() {
+        return publicacionRepository.findAll();
+    }
 
     @Override
     public Publicacion getPublicacionById(String id) {
@@ -51,6 +51,6 @@ public class PublicacionServiceImpl implements PublicacionService {
     }
     private Publicacion findPublicacionById(String id) {
         return publicacionRepository.findById(id)
-                .orElseThrow(() -> new PublicacionNotFoundExeption("Publicacion no encontrado con id " + id));
+                .orElseThrow(() -> new PublicacionNotFoundExeption("Publicacion no encontrada con id " + id));
     }
 }

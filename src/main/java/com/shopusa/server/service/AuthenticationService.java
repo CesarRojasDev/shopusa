@@ -6,6 +6,5 @@ import com.shopusa.server.dao.response.JwtAuthenticationResponse;
 
 public interface AuthenticationService {
     JwtAuthenticationResponse signup(SignUpRequest request);
-
     JwtAuthenticationResponse signin(SignInRequest request);
 }

@@ -31,11 +31,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handlePlataformaNotFoundException(PlataformaNotFoundExeption ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
-//
-//    @ExceptionHandler(PublicacionNotFoundExeption.class)
-//    public ResponseEntity<String> handlePublicacionNotFoundException(PublicacionNotFoundExeption ex) {
-//        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
-//    }
+
+    @ExceptionHandler(PublicacionNotFoundExeption.class)
+    public ResponseEntity<String> handlePublicacionNotFoundException(PublicacionNotFoundExeption ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGeneralException(Exception ex) {
