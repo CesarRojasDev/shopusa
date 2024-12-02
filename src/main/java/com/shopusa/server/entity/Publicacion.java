@@ -2,6 +2,8 @@ package com.shopusa.server.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,13 +22,14 @@ public class Publicacion{
     private Double precio;
     @Column(name = "skuPlataforma")
     private String skuPlataforma;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "producto_id", nullable = false)
     private Producto producto;
     @ManyToOne
     @JoinColumn(name = "plataforma_id", nullable = false)
     private Plataforma plataforma;
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 }

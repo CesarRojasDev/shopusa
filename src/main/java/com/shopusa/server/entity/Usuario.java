@@ -3,6 +3,7 @@ package com.shopusa.server.entity;
 import java.util.Collection;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,6 +32,7 @@ public class Usuario implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @JsonBackReference
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Publicacion> publicaciones;
 
