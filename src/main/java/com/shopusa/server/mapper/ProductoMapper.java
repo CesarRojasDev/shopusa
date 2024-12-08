@@ -11,9 +11,9 @@ public interface ProductoMapper {
 
     ProductoMapper INSTANCE = Mappers.getMapper(ProductoMapper.class);
 
-    @Mapping(source = "subCategoria.nombre", target = "subCategoria.nombre")
+    @Mapping(source = "subCategoriaId", target = "subCategoria.id")
     Producto toProducto(ProductoDTO productoDTO);
-    @Mapping(source = "subCategoria.nombre", target = "subCategoria.nombre")
+    @Mapping(source = "subCategoria.id", target = "subCategoriaId")
     ProductoDTO toProductoDTO(Producto producto);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

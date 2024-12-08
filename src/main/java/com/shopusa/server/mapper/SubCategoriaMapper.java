@@ -11,9 +11,9 @@ public interface SubCategoriaMapper {
 
     SubCategoriaMapper INSTANCE = Mappers.getMapper(SubCategoriaMapper.class);
 
-    @Mapping(source = "categoria.nombre", target = "categoria.nombre")
+    @Mapping(source = "categoriaId", target = "categoria.id")
     SubCategoria toSubCategoria(SubCategoriaDTO subCategoriaDTO);
-    @Mapping(source = "categoria.nombre", target = "categoria.nombre")
+    @Mapping(source = "categoria.id", target = "categoriaId")
     SubCategoriaDTO toSubCategoriaDTO(SubCategoria subCategoria);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

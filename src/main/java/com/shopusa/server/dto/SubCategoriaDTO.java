@@ -12,5 +12,5 @@ public class SubCategoriaDTO {
     private Double largo;
     private String garantia;
     private Double pesoGramos;
-    private CategoriaDTO categoria;
+    private String categoriaId;
 }

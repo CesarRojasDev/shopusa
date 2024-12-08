@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class ComisionDTO {
     private Double valor;
-    private CategoriaDTO categoria;
-    private PlataformaDTO plataforma;
+    private String categoriaId;
+    private String plataformaId;
 }

@@ -11,11 +11,11 @@ public interface ComisionMapper {
 
     ComisionMapper INSTANCE = Mappers.getMapper(ComisionMapper.class);
 
-    @Mapping(source = "categoria.nombre", target = "categoria.nombre")
-    @Mapping(source = "plataforma.nombre", target = "plataforma.nombre")
+    @Mapping(source = "categoriaId", target = "categoria.id")
+    @Mapping(source = "plataformaId", target = "plataforma.id")
     Comision toComision(ComisionDTO comisionDTO);
-    @Mapping(source = "categoria.nombre", target = "categoria.nombre")
-    @Mapping(source = "plataforma.nombre", target = "plataforma.nombre")
+    @Mapping(source = "categoria.id", target = "categoriaId")
+    @Mapping(source = "plataforma.id", target = "plataformaId")
     ComisionDTO toComisionDTO(Comision comision);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
