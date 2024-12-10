@@ -22,7 +22,7 @@ public class ImagenController {
     }
 
     @PostMapping
-    public ImagenDTO createImagen(@RequestBody ImagenDTO imagenDTO){
+    public List<Imagen> createImagen(@RequestBody ImagenDTO imagenDTO){
         return imagenService.createImagen(imagenDTO);
     }
 }

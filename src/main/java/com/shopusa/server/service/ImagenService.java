@@ -7,5 +7,5 @@ import com.shopusa.server.entity.Imagen;
 
 public interface ImagenService {
     List<Imagen> getAllImagenes();
-    ImagenDTO createImagen(ImagenDTO imagenDTO);
+    List<Imagen> createImagen(ImagenDTO imagenDTO);
 }

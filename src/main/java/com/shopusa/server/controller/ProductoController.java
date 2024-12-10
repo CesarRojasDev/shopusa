@@ -29,6 +29,11 @@ public class ProductoController {
         return productoService.getProductoById(id);
     }
 
+    @GetMapping("/sku/{sku}")
+    public Producto getProductoBySku(@PathVariable String sku){
+        return productoService.getProductoBySku(sku);
+    }
+
     @PostMapping
     public ProductoDTO createProducto(@RequestBody ProductoDTO productoDTO){
         return productoService.createProducto(productoDTO);

@@ -30,6 +30,11 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
+    public Producto getProductoBySku(String sku) {
+        return productoRepository.findBySku(sku);
+    }
+
+    @Override
     public ProductoDTO createProducto(ProductoDTO productoDTO) {
         Producto producto = productoMapper.INSTANCE.toProducto(productoDTO);
         producto.setPrecioSoles(calculatePrecioSoles(producto.getPrecioUSD()));

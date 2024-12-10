@@ -47,9 +47,11 @@ public class Producto {
     @JsonBackReference
     private List<Imagen> imagenes = new ArrayList<>();
     @JsonProperty("imagenesUrls")
+    @Transient  // Para evitar persistirlo en la base de datos
     public List<String> getImagenesUrls() {
         return imagenes.stream()
-                .map(Imagen::getUrl)
+                .map(Imagen::getUrl)  // Extrae las URLs de las imágenes
                 .collect(Collectors.toList());
     }
+
 }
