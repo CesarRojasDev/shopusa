@@ -44,7 +44,7 @@ public class ProductoController {
     public ProductoDTO updateProducto(@PathVariable String id, @RequestBody ProductoDTO productoDTO){
         return productoService.updateProducto(id,productoDTO);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public void deleteProducto(@PathVariable String id){
         productoService.deleteProducto(id);

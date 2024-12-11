@@ -1,5 +1,6 @@
 package com.shopusa.server.service.impl;
 
+import com.shopusa.server.dto.UsuarioResponse;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,9 +41,24 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public JwtAuthenticationResponse signin(SignInRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new IllegalArgumentException("Credenciales incorrectas"));
+
         var jwt = jwtService.generateToken(user);
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+
+        // Crear un DTO con los datos del usuario
+        var usuarioResponse = UsuarioResponse.builder()
+                .id(user.getId())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .username(user.getUsername())
+                .role(user.getRole())
+                .build();
+
+        return JwtAuthenticationResponse.builder()
+                .token(jwt)
+                .usuario(usuarioResponse)
+                .build();
     }
 }
