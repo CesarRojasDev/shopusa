@@ -5,6 +5,8 @@ import java.math.RoundingMode;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.shopusa.server.dto.ProductoDTO;
@@ -22,7 +24,9 @@ public class ProductoServiceImpl implements ProductoService {
     private ProductoMapper productoMapper;
 
     @Override
-    public List<Producto> getAllProductos() {return productoRepository.findAll();}
+    public Page<Producto> getAllProductos(Pageable pageable) {
+        return productoRepository.findAll(pageable);
+    }
 
     @Override
     public Producto getProductoById(String id) {
