@@ -5,8 +5,11 @@ import com.shopusa.server.entity.Producto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface ProductoService {
-    Page<Producto> getAllProductos(Pageable pegeable);
+    Page<Producto> getAllProductosPaginados(Pageable pegeable);
+    List<Producto> getAllProductos();
     Producto getProductoById(String id);
     Producto getProductoBySku(String sku);
     ProductoDTO createProducto(ProductoDTO productoDTO);

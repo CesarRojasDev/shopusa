@@ -20,9 +20,14 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
+
+    @GetMapping("/paginados")
+    public Page<Producto> getProductosPaginados(Pageable pageable){
+        return productoService.getAllProductosPaginados(pageable);
+    }
     @GetMapping
-    public Page<Producto> getProductos(Pageable pageable){
-        return productoService.getAllProductos(pageable);
+    public List<Producto> getProductos(){
+        return productoService.getAllProductos();
     }
 
     @GetMapping("/{id}")

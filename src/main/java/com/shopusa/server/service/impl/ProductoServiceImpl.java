@@ -24,8 +24,13 @@ public class ProductoServiceImpl implements ProductoService {
     private ProductoMapper productoMapper;
 
     @Override
-    public Page<Producto> getAllProductos(Pageable pageable) {
+    public Page<Producto> getAllProductosPaginados(Pageable pageable) {
         return productoRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Producto> getAllProductos() {
+        return productoRepository.findAll();
     }
 
     @Override
