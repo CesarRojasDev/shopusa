@@ -12,11 +12,11 @@ public interface PublicacionMapper {
     PublicacionMapper INSTANCE = Mappers.getMapper(PublicacionMapper.class);
 
     @Mapping(source = "plataformaId", target = "plataforma.id")
-    @Mapping(source = "productoId", target = "producto.id")
+    @Mapping(source = "sku", target = "producto.sku")
     @Mapping(source = "usuarioId", target = "usuario.id")
     Publicacion toPublicacion(PublicacionDTO publicacionDTO);
     @Mapping(source = "plataforma.id", target = "plataformaId")
-    @Mapping(source = "producto.id", target = "productoId")
+    @Mapping(source = "producto.sku", target = "sku")
     @Mapping(source = "usuario.id", target = "usuarioId")
     PublicacionDTO toPublicacionDTO(Publicacion publicacion);
 
