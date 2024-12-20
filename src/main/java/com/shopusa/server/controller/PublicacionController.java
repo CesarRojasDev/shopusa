@@ -52,30 +52,8 @@ public class PublicacionController {
         publicacionService.deletePublicacion(id);
     }
     @GetMapping("/calcular-precio")
-    public ResponseEntity<?> calcularPrecio(@RequestParam String sku, @RequestParam String plataforma) {
-        // Buscar producto por SKU
-        Producto producto = productoRepository.findBySku(sku);
-
-        // Obtener categoría del producto
-        String categoriaId = producto.getSubCategoria().getCategoria().getId();
-
-        // Buscar comisión por plataforma y categoría
-        Comision comision = comisionRepository
-                .findByPlataformaIdAndCategoriaId(plataforma, categoriaId)
-                .orElseThrow(() -> new RuntimeException("Comisión no encontrada"));
-
-        // Calcular precio final
-        Double precioBase = producto.getPrecioSoles();
-        Double precioFinal = precioBase + (precioBase * comision.getValor());
-
-        BigDecimal precioRedondeado = new BigDecimal(precioFinal)
-                .setScale(2, RoundingMode.HALF_UP); // Redondeo hacia el más cercano
-
-        precioFinal = precioRedondeado.doubleValue();
-
-         return ResponseEntity.ok(Map.of(
-                 "sku", sku,
-                 "precioFinal", precioFinal
-         ));
+    public ResponseEntity<?> calcularPrecio(@RequestParam String productoId, @RequestParam String plataformaId) {
+        Map<String, Object> resultado = publicacionService.calcularPrecio(productoId, plataformaId);
+        return ResponseEntity.ok(resultado);
     }
 }

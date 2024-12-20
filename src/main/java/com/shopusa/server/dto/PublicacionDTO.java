@@ -10,6 +10,6 @@ public class PublicacionDTO {
     private Double precio;
     private String skuPlataforma;
     private String plataformaId;
-    private String sku;
+    private String productoId;
     private String usuarioId;
 }
