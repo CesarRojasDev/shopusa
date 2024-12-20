@@ -90,7 +90,7 @@ public class PublicacionServiceImpl implements PublicacionService {
     }
 
     private double calcularPrecioFinal(double precioBase, double valorComision) {
-        double precioFinal = precioBase + (precioBase * valorComision);
+        double precioFinal = precioBase / (1 - valorComision);
         return redondearPrecio(precioFinal);
     }
 

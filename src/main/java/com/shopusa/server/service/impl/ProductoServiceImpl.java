@@ -73,10 +73,24 @@ public class ProductoServiceImpl implements ProductoService {
 
     private double calculatePrecioSoles(double precioUSD) {
         BigDecimal tipoCambio = new BigDecimal("3.80");
-        BigDecimal precioUSDBigDecimal = BigDecimal.valueOf(precioUSD);
+        BigDecimal precioEnvio = BigDecimal.valueOf(20.0);
+
+        // Convertir el precio en USD a soles con el costo de envío
+        BigDecimal precioUSDBigDecimal = BigDecimal.valueOf(precioUSD).add(precioEnvio);
+        System.out.println("Precio en USD: " + precioUSDBigDecimal);
+
+        // Calcular el precio en soles
         BigDecimal precioSoles = precioUSDBigDecimal.multiply(tipoCambio);
         precioSoles = precioSoles.setScale(2, RoundingMode.HALF_UP);
-        System.out.println("USD: " + precioUSD + " - Soles: " + precioSoles.doubleValue());  // Para depurar
-        return precioSoles.doubleValue();
+        System.out.println("Precio en Soles: " + precioSoles);
+
+        // Calcular el precio final considerando la ganancia
+        BigDecimal gananciaFactor = BigDecimal.valueOf(1 - 0.14);  // 1 - 0.14 = 0.86
+        BigDecimal precioFinal = precioSoles.divide(gananciaFactor, RoundingMode.HALF_UP);  // Dividir por 0.86 para agregar la ganancia
+        precioFinal = precioFinal.setScale(2, RoundingMode.HALF_UP);
+
+        System.out.println("Precio Final: " + precioFinal);
+
+        return precioFinal.doubleValue();
     }
 }
