@@ -18,7 +18,7 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     private String id;
-    @Column(name ="nombre" )
+    @Column(name ="nombre", columnDefinition = "TEXT" )
     private String nombre;
     @Column(name = "sku")
     private String sku;
@@ -36,7 +36,7 @@ public class Producto {
     private Integer stock = 4;
     @Column(name ="descripcion", columnDefinition = "TEXT")
     private String descripcion;
-    @Column(name ="caracteristica")
+    @Column(name ="caracteristica", columnDefinition = "TEXT")
     private String caracteristica;
     @Column(name ="link", columnDefinition = "TEXT")
     private  String link;
@@ -53,5 +53,4 @@ public class Producto {
                 .map(Imagen::getUrl)  // Extrae las URLs de las imágenes
                 .collect(Collectors.toList());
     }
-
 }
