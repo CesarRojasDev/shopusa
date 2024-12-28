@@ -11,7 +11,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "productos")
+@Table(name = "productos",uniqueConstraints = {
+        @UniqueConstraint(columnNames = "sku")
+})
 @Data
 @NoArgsConstructor
 public class Producto {

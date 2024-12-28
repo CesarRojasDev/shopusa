@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "comisiones")
+@Table(name = "comisiones",uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"categoria_id", "plataforma_id"})
+})
 @Data
 @NoArgsConstructor
 public class Comision {

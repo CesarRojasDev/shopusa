@@ -2,14 +2,15 @@ package com.shopusa.server.entity;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "publicaciones")
+@Table(name = "publicaciones",uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"producto_id", "plataforma_id"})
+})
 @Data
 @NoArgsConstructor
 public class Publicacion{

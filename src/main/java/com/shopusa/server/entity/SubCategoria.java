@@ -7,7 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "subCategorias")
+@Table(name = "subCategorias",uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"categoria_id","nombre","codigo"})
+})
 @Data
 @NoArgsConstructor
 public class SubCategoria {
