@@ -2,8 +2,6 @@ package com.shopusa.server.dto;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 public class ProductoDTO {
     private String id;
