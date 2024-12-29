@@ -12,6 +12,7 @@ public interface ProductoService {
     List<Producto> getAllProductos();
     Producto getProductoById(String id);
     Producto getProductoBySku(String sku);
+    Page<Producto> searchBySubCategoria(String subcategoria, Pageable pageable);
     Page<Producto> searchProductsByName(String nombre,Pageable pageable);
     ProductoDTO createProducto(ProductoDTO productoDTO);
     ProductoDTO updateProducto(String id,ProductoDTO productoDTO);

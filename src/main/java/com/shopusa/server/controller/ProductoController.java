@@ -48,6 +48,13 @@ public class ProductoController {
     ){
         return productoService.searchProductsByName(nombre,pageable);
     }
+    @GetMapping("/filter")
+    public Page<Producto> searchBySubCategoria(
+            @PageableDefault(size = 16, sort = "nombre") Pageable pageable,
+            @RequestParam("subcategoria") String subcategoria
+    ){
+        return productoService.searchBySubCategoria(subcategoria,pageable);
+    }
     @PostMapping
     public ProductoDTO createProducto(@RequestBody ProductoDTO productoDTO){
         return productoService.createProducto(productoDTO);

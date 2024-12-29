@@ -44,6 +44,11 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
+    public Page<Producto> searchBySubCategoria(String subcategoria, Pageable pageable) {
+        return productoRepository.findBySubCategoria_id(subcategoria,pageable);
+    }
+
+    @Override
     public Page<Producto> searchProductsByName(String nombre, Pageable pageable) {
         return productoRepository.findByNombreContainingIgnoreCase(nombre,pageable);
     }
