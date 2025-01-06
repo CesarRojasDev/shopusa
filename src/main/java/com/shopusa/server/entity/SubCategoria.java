@@ -35,4 +35,15 @@ public class SubCategoria {
     private Categoria categoria;
     @OneToMany(mappedBy = "subCategoria", cascade = CascadeType.ALL)
     private Set<Producto> productos;
+
+    @PrePersist
+    @PreUpdate
+    private void convertFieldsToUpperCase() {
+        if (garantia != null) {
+            garantia = garantia.toUpperCase();
+        }
+        if (codigo != null) {
+            codigo = codigo.toUpperCase();
+        }
+    }
 }
