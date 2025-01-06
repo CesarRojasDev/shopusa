@@ -1,7 +1,11 @@
 package com.shopusa.server.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +13,11 @@ import com.shopusa.server.entity.Comision;
 import com.shopusa.server.entity.Producto;
 import com.shopusa.server.repository.ComisionRepository;
 import com.shopusa.server.repository.ProductoRepository;
+import com.shopusa.server.service.ExcelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +35,10 @@ public class PublicacionController {
     private ProductoRepository productoRepository;
     @Autowired
     private ComisionRepository comisionRepository;
+
+    @Autowired
+    private ExcelService excelService;
+
     @GetMapping
     public List<Publicacion> getAllPublicaciones(){
         return  publicacionService.getAllPublicaciones();
@@ -55,5 +67,20 @@ public class PublicacionController {
     public ResponseEntity<?> calcularPrecio(@RequestParam String productoId, @RequestParam String plataformaId) {
         Map<String, Object> resultado = publicacionService.calcularPrecio(productoId, plataformaId);
         return ResponseEntity.ok(resultado);
+    }
+    @GetMapping("/export")
+    public ResponseEntity<InputStreamResource> exportPublicacionesToExcel() throws IOException {
+        ByteArrayInputStream in = excelService.exportPublicacionesToExcel();
+        LocalDate today = LocalDate.now();
+        String formattedDate = today.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+        String fileName = "SHOPUSA-PUBLICACIONES-" + formattedDate + ".xlsx";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment; filename="+fileName);
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(new InputStreamResource(in));
     }
 }

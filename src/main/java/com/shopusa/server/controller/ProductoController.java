@@ -1,11 +1,19 @@
 package com.shopusa.server.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import com.shopusa.server.service.ExcelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +28,8 @@ public class ProductoController {
 
     @Autowired
     private ProductoService productoService;
-
+    @Autowired
+    private ExcelService excelService;
 
     @GetMapping("/paginados")
     public Page<Producto> getProductosPaginados(Pageable pageable){
@@ -68,5 +77,19 @@ public class ProductoController {
     @DeleteMapping("/{id}")
     public void deleteProducto(@PathVariable String id){
         productoService.deleteProducto(id);
+    }
+    @GetMapping("/export")
+    public ResponseEntity<InputStreamResource> exportProductosToExcel() throws IOException {
+        ByteArrayInputStream in = excelService.exportProductosToExcel();
+        LocalDate today = LocalDate.now();
+        String formattedDate = today.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+        String fileName = "SHOPUSA-PRODUCTOS-" + formattedDate + ".xlsx";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment; filename="+fileName);
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(new InputStreamResource(in));
     }
 }
