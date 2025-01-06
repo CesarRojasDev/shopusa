@@ -1,7 +1,6 @@
 package com.shopusa.server.dao.response;
 
-import com.shopusa.server.dto.UsuarioResponse;
-import com.shopusa.server.entity.Usuario;
+import com.shopusa.server.dto.UsuarioResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,5 +12,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class JwtAuthenticationResponse {
     private String token;
-    private UsuarioResponse usuario;
+    private UsuarioResponseDTO usuario;
 }

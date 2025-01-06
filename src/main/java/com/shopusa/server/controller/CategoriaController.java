@@ -63,7 +63,7 @@ public class CategoriaController {
         String fileName = "SHOPUSA-CATEGORIAS-" + formattedDate + ".xlsx";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename="+fileName);
-
+        headers.add("X-File-Name",fileName);
         return ResponseEntity.ok()
                 .headers(headers)
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)

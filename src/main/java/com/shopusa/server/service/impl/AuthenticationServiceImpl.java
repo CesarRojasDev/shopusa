@@ -1,6 +1,6 @@
 package com.shopusa.server.service.impl;
 
-import com.shopusa.server.dto.UsuarioResponse;
+import com.shopusa.server.dto.UsuarioResponseDTO;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -48,7 +48,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         var jwt = jwtService.generateToken(user);
 
         // Crear un DTO con los datos del usuario
-        var usuarioResponse = UsuarioResponse.builder()
+        var usuarioResponse = UsuarioResponseDTO.builder()
                 .id(user.getId())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())

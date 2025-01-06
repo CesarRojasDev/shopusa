@@ -62,7 +62,7 @@ public class ComisionController {
         String fileName = "SHOPUSA-COMISIONES-" + formattedDate + ".xlsx";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename="+fileName);
-
+        headers.add("X-File-Name",fileName);
         return ResponseEntity.ok()
                 .headers(headers)
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)

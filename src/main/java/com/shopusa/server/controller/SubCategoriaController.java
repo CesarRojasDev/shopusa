@@ -62,6 +62,7 @@ public class SubCategoriaController {
         String fileName = "SHOPUSA-SUBCATEGORIAS-" + formattedDate + ".xlsx";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename="+fileName);
+        headers.add("X-File-Name",fileName);
 
         return ResponseEntity.ok()
                 .headers(headers)
