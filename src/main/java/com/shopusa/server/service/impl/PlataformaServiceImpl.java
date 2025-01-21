@@ -2,12 +2,12 @@ package com.shopusa.server.service.impl;
 
 import java.util.List;
 
+import com.shopusa.server.exeption.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopusa.server.dto.PlataformaDTO;
 import com.shopusa.server.entity.Plataforma;
-import com.shopusa.server.exeption.PlataformaNotFoundExeption;
 import com.shopusa.server.mapper.PlataformaMapper;
 import com.shopusa.server.repository.PlataformaRepository;
 import com.shopusa.server.service.PlataformaService;
@@ -52,6 +52,7 @@ public class PlataformaServiceImpl implements PlataformaService {
 
     private Plataforma findPlataformaById(String id) {
         return plataformaRepository.findById(id)
-                .orElseThrow(() -> new PlataformaNotFoundExeption("Plataforma no encontrada con id " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Plataforma", id));
+
     }
 }

@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import com.shopusa.server.service.ExcelService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
@@ -65,12 +66,12 @@ public class ProductoController {
         return productoService.searchBySubCategoria(subcategoria,pageable);
     }
     @PostMapping
-    public ProductoDTO createProducto(@RequestBody ProductoDTO productoDTO){
+    public ProductoDTO createProducto(@Valid @RequestBody ProductoDTO productoDTO){
         return productoService.createProducto(productoDTO);
     }
 
     @PutMapping("/{id}")
-    public ProductoDTO updateProducto(@PathVariable String id, @RequestBody ProductoDTO productoDTO){
+    public ProductoDTO updateProducto(@Valid @PathVariable String id, @RequestBody ProductoDTO productoDTO){
         return productoService.updateProducto(id,productoDTO);
     }
     @PreAuthorize("hasRole('ADMIN')")

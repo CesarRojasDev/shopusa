@@ -2,12 +2,12 @@ package com.shopusa.server.service.impl;
 
 import java.util.List;
 
+import com.shopusa.server.exeption.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopusa.server.dto.SubCategoriaDTO;
 import com.shopusa.server.entity.SubCategoria;
-import com.shopusa.server.exeption.SubCategoriaNotFoundExeption;
 import com.shopusa.server.mapper.SubCategoriaMapper;
 import com.shopusa.server.repository.SubCategoriaRepository;
 import com.shopusa.server.service.SubCategoriaService;
@@ -52,6 +52,6 @@ public class SubCategoriaServiceImpl implements SubCategoriaService {
 
     private SubCategoria findSubCategoriaById(String id) {
         return subCategoriaRepository.findById(id)
-                .orElseThrow(() -> new SubCategoriaNotFoundExeption("SubCategoria no encontrada con id " + id));
+                .orElseThrow(() -> new EntityNotFoundException("SubCategoria", id));
     }
 }

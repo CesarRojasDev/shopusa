@@ -2,12 +2,12 @@ package com.shopusa.server.service.impl;
 
 import java.util.List;
 
+import com.shopusa.server.exeption.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopusa.server.dto.CategoriaDTO;
 import com.shopusa.server.entity.Categoria;
-import com.shopusa.server.exeption.CategoriaNotFoundExeption;
 import com.shopusa.server.mapper.CategoriaMapper;
 import com.shopusa.server.repository.CategoriaRepository;
 import com.shopusa.server.service.CategoriaService;
@@ -52,6 +52,6 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     private Categoria findCategoriaById(String id) {
         return categoriaRepository.findById(id)
-                .orElseThrow(() -> new CategoriaNotFoundExeption("Categoria no encontrada con id " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Categoria", id));
     }
 }

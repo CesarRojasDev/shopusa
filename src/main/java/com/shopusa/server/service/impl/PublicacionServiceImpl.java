@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.shopusa.server.entity.Comision;
 import com.shopusa.server.entity.Producto;
-import com.shopusa.server.exeption.ProductoNotFoundExeption;
+import com.shopusa.server.exeption.EntityNotFoundException;
 import com.shopusa.server.repository.ComisionRepository;
 import com.shopusa.server.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import com.shopusa.server.dto.PublicacionDTO;
 import com.shopusa.server.entity.Publicacion;
-import com.shopusa.server.exeption.PublicacionNotFoundExeption;
 import com.shopusa.server.mapper.PublicacionMapper;
 import com.shopusa.server.repository.PublicacionRepository;
 import com.shopusa.server.service.PublicacionService;
@@ -73,7 +72,7 @@ public class PublicacionServiceImpl implements PublicacionService {
 
     private Producto obtenerProductoPorId(String productoId) {
         return productoRepository.findById(productoId)
-                .orElseThrow(() -> new ProductoNotFoundExeption("Producto no encontrado con el ID: " + productoId));
+                .orElseThrow(() -> new EntityNotFoundException("Producto", productoId));
     }
 
     private String obtenerCategoriaDelProducto(Producto producto) {
@@ -109,6 +108,6 @@ public class PublicacionServiceImpl implements PublicacionService {
 
     private Publicacion findPublicacionById(String id) {
         return publicacionRepository.findById(id)
-                .orElseThrow(() -> new PublicacionNotFoundExeption("Publicacion no encontrada con id " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Publicacion", id));
     }
 }

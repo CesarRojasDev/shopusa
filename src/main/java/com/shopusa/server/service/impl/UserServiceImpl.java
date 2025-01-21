@@ -1,5 +1,6 @@
 package com.shopusa.server.service.impl;
 
+import com.shopusa.server.exeption.EntityNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,7 +23,7 @@ public class UserServiceImpl implements UsuarioService {
             @Override
             public UserDetails loadUserByUsername(String username) {
                 return userRepository.findByUsername(username)
-                        .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+                        .orElseThrow(() -> new EntityNotFoundException("Usuario",username));
             }
         };
     }

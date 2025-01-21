@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,7 @@ public class Producto {
     @Column(name = "sku")
     private String sku;
     @Column(name ="precioUSD" )
+    @Min(value = 40,message = "El Precio debe ser 40")
     private Double precioUSD;
     @Column(name ="precioSoles")
     private Double precioSoles;

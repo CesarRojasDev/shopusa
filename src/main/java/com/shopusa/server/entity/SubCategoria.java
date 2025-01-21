@@ -39,11 +39,11 @@ public class SubCategoria {
     @PrePersist
     @PreUpdate
     private void convertFieldsToUpperCase() {
-        if (garantia != null) {
-            garantia = garantia.toUpperCase();
-        }
-        if (codigo != null) {
-            codigo = codigo.toUpperCase();
-        }
+       if (this.garantia != null){
+           this.garantia = this.garantia.toUpperCase();
+       }
+       if (this.codigo != null){
+           this.codigo = this.codigo.toUpperCase();
+       }
     }
 }

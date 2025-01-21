@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import com.shopusa.server.exeption.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.shopusa.server.dto.ProductoDTO;
 import com.shopusa.server.entity.Producto;
-import com.shopusa.server.exeption.ProductoNotFoundExeption;
 import com.shopusa.server.mapper.ProductoMapper;
 import com.shopusa.server.repository.ProductoRepository;
 import com.shopusa.server.service.ProductoService;
@@ -78,7 +78,7 @@ public class ProductoServiceImpl implements ProductoService {
 
     private Producto findProductoById(String id) {
         return productoRepository.findById(id)
-                .orElseThrow(() -> new ProductoNotFoundExeption("Producto no encontrado con id " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Producto", id));
     }
 
     private double calculatePrecioSoles(double precioUSD, double pesoGramos) {

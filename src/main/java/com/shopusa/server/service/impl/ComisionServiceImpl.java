@@ -2,12 +2,12 @@ package com.shopusa.server.service.impl;
 
 import java.util.List;
 
+import com.shopusa.server.exeption.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopusa.server.dto.ComisionDTO;
 import com.shopusa.server.entity.Comision;
-import com.shopusa.server.exeption.ComisionNotFoundExeption;
 import com.shopusa.server.mapper.ComisionMapper;
 import com.shopusa.server.repository.ComisionRepository;
 import com.shopusa.server.service.ComisionService;
@@ -52,6 +52,6 @@ public class ComisionServiceImpl implements ComisionService {
 
     private Comision findComisionById(String id) {
         return comisionRepository.findById(id)
-                .orElseThrow(() -> new ComisionNotFoundExeption("Comision no encontrada con id " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Comision", id));
     }
 }

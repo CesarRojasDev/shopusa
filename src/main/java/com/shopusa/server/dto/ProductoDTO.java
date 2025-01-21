@@ -1,5 +1,5 @@
 package com.shopusa.server.dto;
-
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Data
